@@ -9,9 +9,9 @@ This document identifies the naming conventions used for the different objects i
 
 ### **Bronze & Silver Layer Rules**
  - All table names must start with source file name + original table name
- - '<sourcefile>_<entity>': crm_customer_info
-   - '<sourcefile>': name of the source file, ex: crm
-   - '<entity>': name of the original table, ex: customer_info
+ - `<sourcefile>_<entity>`: name of the table, ex: crm_customer_info
+   - `<sourcefile>`: name of the source file, ex: crm
+   - `<entity>`: name of the original table, ex: customer_info
 
 ### **Gold Layer Rules**
 
