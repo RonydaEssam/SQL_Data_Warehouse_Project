@@ -1,3 +1,9 @@
+/* 
+SCRIPT PURPOSE:
+	This script creates the tables of the bronze layer, dropping existing tables if they already exist,
+	in prepertion for loading the tables with the data from the source files.
+*/
+
 USE DataWarehouse;
 
 IF OBJECT_ID ('bronze.crm_cust_info', 'U') IS NOT NULL
