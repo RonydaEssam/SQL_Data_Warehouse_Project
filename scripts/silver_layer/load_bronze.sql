@@ -9,7 +9,6 @@ INSERT INTO silver.crm_cust_info (
 	cst_gndr,
 	cst_create_date
 )
-
 SELECT
 	cst_id,
 	cst_key,
@@ -40,6 +39,7 @@ WHERE flag_last  = 1;
 TRUNCATE TABLE silver.crm_prd_info
 INSERT INTO silver.crm_prd_info(
 	prd_id,
+	cat_id,
 	prd_key,
 	prd_nm,
 	prd_cost,
@@ -47,10 +47,8 @@ INSERT INTO silver.crm_prd_info(
 	prd_start_dt,
 	prd_end_dt
 )
-
 SELECT 
 	prd_id,
-	prd_key,
 	REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_') AS cat_id,
 	SUBSTRING(prd_key, 7, len(prd_key)) AS prd_key,
 	TRIM(prd_nm) AS prd_nm,
@@ -63,5 +61,31 @@ SELECT
 		ELSE 'n/a'
 	END AS prd_line,
 	prd_start_dt,
-	DATEADD(day, -1,LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt)) AS prd_end_date_test
+	DATEADD(day, -1,LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt)) AS prd_end_date
 FROM bronze.crm_prd_info
+
+
+-- Load data into table: silver.crm_sales_details
+TRUNCATE TABLE silver.crm_sales_details
+INSERT INTO silver.crm_sales_details(
+	sls_ord_num,
+	sls_prd_key,
+	sls_cust_id,
+	sls_order_dt,
+	sls_ship_dt,
+	sls_due_dt,
+	sls_sales,
+	sls_quantity,
+	sls_price
+)
+SELECT
+	sls_ord_num,
+	sls_prd_key,
+	sls_cust_id,
+	NULLIF(sls_order_dt, 0) sls_order_dt,
+	sls_ship_dt,
+	sls_due_dt,
+	sls_sales,
+	sls_quantity,
+	sls_price
+FROM bronze.crm_sales_details
