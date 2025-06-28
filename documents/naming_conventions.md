@@ -16,3 +16,15 @@ This document identifies the naming conventions used for the different objects i
 ### **Gold Layer Rules**
 
 
+
+## **Stored Procedures**
+ - All stored procedures created should be named as follow:
+ - `load_<layer>`: ex: 'load_bronze'
+   - `<layer>`: identifies the layer of the created stored procedure (bronze, silver, gold)
+
+
+## **Technical Columns**
+ - Any columns added for the data engineering purposes must start with 'dwh_' followed by the column name
+  - `dwh_<column_name>`: ex: 'dwh_create_date'
+   - `dwh_`: prefix used for specifically metadata columns
+   - `<column_name>`: must be descriptive for the column purpose
