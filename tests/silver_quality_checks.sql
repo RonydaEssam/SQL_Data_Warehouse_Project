@@ -126,7 +126,44 @@ ORDER BY sls_sales, sls_quantity, sls_price
 SELECT * FROM silver.crm_sales_details
 
 
--- ** Table: crm_cust_info **
+-- ** Table: erp_cust_az12 **
+SELECT *
+FROM silver.erp_cust_az12
+WHERE cid NOT LIKE 'NAS%'
+
+SELECT *
+FROM silver.erp_cust_az12
+WHERE bdate > GETDATE()
+
+SELECT DISTINCT gen
+FROM silver.erp_cust_az12
+
+SELECT * FROM silver.erp_cust_az12
 
 
-SELECT * FROM bronze.erp_cust_az12
+-- ** Table: erp_loc_a101 **
+SELECT *
+FROM silver.erp_loc_a101
+WHERE cid LIKE 'AW-%'
+
+SELECT DISTINCT cntry
+FROM silver.erp_loc_a101
+
+SELECT * FROM silver.erp_loc_a101
+
+
+-- ** Table: erp_px_cat_g1v2 **
+SELECT *
+FROM silver.erp_px_cat_g1v2
+WHERE id != TRIM(id) OR cat != TRIM(cat) OR subcat != TRIM(subcat) OR maintenance != TRIM(maintenance)
+
+SELECT DISTINCT cat
+FROM silver.erp_px_cat_g1v2
+
+SELECT DISTINCT subcat
+FROM silver.erp_px_cat_g1v2
+
+SELECT DISTINCT maintenance
+FROM silver.erp_px_cat_g1v2
+
+SELECT * FROM silver.erp_px_cat_g1v2
