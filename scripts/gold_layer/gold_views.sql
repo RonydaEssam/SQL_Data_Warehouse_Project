@@ -1,4 +1,17 @@
+/*
+Script Purpose:
+    This script creates views for the Gold layer in the data warehouse. 
+    The Gold layer represents the final dimension and fact tables (Star Schema)
 
+    Each view performs transformations and combines data from the Silver layer 
+    to produce a clean, enriched, and business-ready dataset.
+
+Usage:
+    - These views can be queried directly for analytics and reporting.
+*/
+
+-- Create dimension table: gold.dim_customers
+DROP VIEW gold.dim_customers
 CREATE VIEW gold.dim_customers AS
 SELECT
 	ROW_NUMBER() OVER (ORDER BY ci.cst_id) AS customer_key,
@@ -21,7 +34,8 @@ LEFT JOIN silver.erp_loc_a101 la
 	ON ci.cst_key = la.cid;
 
 
-
+-- Create dimension table: gold.dim_products
+DROP VIEW gold.dim_products
 CREATE VIEW gold.dim_products AS
 SELECT
 	ROW_NUMBER() OVER (ORDER BY pn.prd_start_dt, pn.prd_id) AS product_key,
@@ -41,3 +55,21 @@ LEFT JOIN silver.erp_px_cat_g1v2 pc
 WHERE pn.prd_end_dt IS NULL;
 
 
+-- Create fact table: gold.fact_sales
+DROP VIEW gold.fact_sales
+CREATE VIEW gold.fact_sales AS
+SELECT
+	sd.sls_ord_num AS order_number,
+	pr.product_key,
+	cr.customer_key,
+	sd.sls_order_dt AS order_date,
+	sd.sls_ship_dt AS shipping_date,
+	sd.sls_due_dt AS due_date,
+	sd.sls_price AS price,
+	sd.sls_quantity AS quantity,
+	sd.sls_sales AS total_sales
+FROM silver.crm_sales_details sd
+LEFT JOIN gold.dim_products pr
+	ON sd.sls_prd_key = pr.product_number
+LEFT JOIN gold.dim_customers cr
+	ON sd.sls_cust_id = cr.customer_id
