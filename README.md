@@ -9,21 +9,28 @@ The project is based on six CSV files of raw operational data from enterprise sy
 ## Project Overview
 This project includes:
 
- ### * **1. Data Architecture:** Designing a Modern Data Warehouse Using Medallion Architecture Bronze, Silver, and Gold layers.
+ ### **1. Data Architecture:**
+ Designing a Modern Data Warehouse Using Medallion Architecture Bronze, Silver, and Gold layers.
 
-    ![Data Architecture Diagram](documents/data_architecture.png)
+ ![Data Architecture Diagram](documents/data_architecture.png)
 
-    * **Bronze Layer:** 
-        This layer stores raw data ingested from the source systems (CSV files) into SQL server Database.
-    * **Silver Layer:**
-        This layer includes the transformation processes (data cleansing, standardization, normalization) to prepare the data for analysis.
-    * **Gold Layer:**
-        This layer includes business-ready data modeled into a star schema, ready for reporting and analytics.
-    * **2. ETL Pipelines:** Extracting, transforming, and loading data from source systems into the warehouse.
-    * **3. Data Modeling:** Developing fact and dimension tables optimized for analytical queries.
-    * **4. Analytics & Reporting:** Creating SQL-based reports and dashboards for actionable insights.
+ * **Bronze Layer:** 
+    This layer stores raw data ingested from the source systems (CSV files) into SQL server Database.
+* **Silver Layer:**
+    This layer includes the transformation processes (data cleansing, standardization, normalization) to prepare the data for analysis.
+* **Gold Layer:**
+    This layer includes business-ready data modeled into a star schema, ready for reporting and analytics.
 
 
+### **2. ETL Pipelines:** Extracting, transforming, and loading data from source systems into the warehouse.
+ ![Data Flow](documents/data_flow.png)
+
+ ![Data Integration](documents/data_integration.png)
+
+### **3. Data Modeling:** Developing fact and dimension tables optimized for analytical queries.
+ ![Data Model](documents/data_mart.png)
+
+### **4. Analytics & Reporting:** Creating SQL-based reports and dashboards for actionable insights.
 
 
 ## Project Structure
