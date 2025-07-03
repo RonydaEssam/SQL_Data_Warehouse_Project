@@ -25,7 +25,7 @@ This project includes:
 ### **2. ETL Pipelines:** Extracting, transforming, and loading data from source systems into the warehouse.
  ![Data Flow](documents/data_flow.png)
 
- ![Data Integration](documents/data_integration.png)
+ ![Data Integration](documents/data_integration_short.png)
 
 ### **3. Data Modeling:** Developing fact and dimension tables optimized for analytical queries.
  ![Data Model](documents/data_mart.png)
@@ -37,14 +37,19 @@ This project includes:
 ```
 SQL_Data_Warehouse_Project/
 |
-|-datasets/
-|   |-
+|-datasets/                 # Raw datasets used for the project
+|   |-source_crm/           # CRM data
+|   |-source_erp/           # ERP data
 |
-|-documents/
-|   |-data_architecture.png
+|-documents/                # Project documentation and architecture details
 |
-|-scripts
+|-scripts/                  # SQL scripts for ETL and transformations
+|   |-bronze_layer/         # Scripts for extracting and loading raw data
+|   |-silver_layer/         # Scripts for cleaning and transforming data
+|   |-gold_layer/           # Scripts for creating analytical models
 |
-|-tests
+|-tests/                    # Test scripts and quality files
 |
+|-README.md                 # Project overview and structure
+|-.gitignore                # Files to be ignored by Git
 ```
