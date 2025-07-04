@@ -32,7 +32,7 @@ Extracting, transforming, and loading data from source systems into the warehous
 ### **3. Data Modeling:**
 Developing fact and dimension tables optimized for analytical queries.
 
- ![Data Model](documents/data_mart.png)
+ ![Data Model](documents/data_model.png)
 
 ### **4. Analytics & Reporting:**
 Creating SQL-based reports and dashboards for actionable insights.
