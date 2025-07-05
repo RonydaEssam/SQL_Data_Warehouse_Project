@@ -14,7 +14,10 @@ This document identifies the naming conventions used for the different objects i
    - `<entity>`: name of the original table, ex: customer_info
 
 ### **Gold Layer Rules**
-
+ - All table names must start with the category prefix followed by the table name
+ - `<category>_<entity>`: name of the table, ex: dim_customers
+   - `<category>`: prefix of the category, ex: dim, fact
+   - `<entity>`: name of the table, ex: customers, sales
 
 
 ## **Stored Procedures**
