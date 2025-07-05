@@ -31,3 +31,9 @@ This document identifies the naming conventions used for the different objects i
   - `dwh_<column_name>`: ex: 'dwh_create_date'
    - `dwh_`: prefix used for specifically metadata columns
    - `<column_name>`: must be descriptive for the column purpose
+
+## **Surrogate Keys**
+ - The columns added as primary keys in the dimensional tables must end with '_key'
+  - `<table_name>_key`: ex: 'customers_key'
+   - `<table_name>`: refers to the table name that the key belongs to
+   - `_key`: suffix used for indicating columns as surrogate keys
